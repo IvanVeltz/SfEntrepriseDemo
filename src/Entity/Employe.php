@@ -37,6 +37,12 @@ class Employe
      */
     private $dateEmbauche;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Entreprise::class, inversedBy="employes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $entreprise;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +92,18 @@ class Employe
     public function setDateEmbauche(\DateTimeInterface $dateEmbauche): self
     {
         $this->dateEmbauche = $dateEmbauche;
+
+        return $this;
+    }
+
+    public function getEntreprise(): ?Entreprise
+    {
+        return $this->entreprise;
+    }
+
+    public function setEntreprise(?Entreprise $entreprise): self
+    {
+        $this->entreprise = $entreprise;
 
         return $this;
     }
