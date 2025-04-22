@@ -43,6 +43,11 @@ class Employe
      */
     private $entreprise;
 
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $ville;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +109,23 @@ class Employe
     public function setEntreprise(?Entreprise $entreprise): self
     {
         $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->prenom." ".$this->nom;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(?string $ville): self
+    {
+        $this->ville = $ville;
 
         return $this;
     }
